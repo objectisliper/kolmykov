@@ -26,12 +26,12 @@
             <br>
             <br>
             <h1>Форма обратной связи</h1>
-            <form method="post">
+            <form method="post" action="/send">
                 {!! csrf_field() !!}
-                <p>Введите ваше имя: <br> <input type="text" name="title" class="form-control" required></p>
+                <p>Введите ваше имя: <br> <input type="text" name="name" class="form-control" required></p>
                 <p>Ваш телефон: <br> <input name="phone" class="form-control" required></p>
                 <p>Ваш e-mail: <br> <input name="email" class="form-control" required></p>
-                <p>Ваше сообщение: <br> <textarea name="email" class="form-control" required></textarea></p>
+                <p>Ваше сообщение: <br> <textarea name="text" class="form-control" required></textarea></p>
                 <button type="submit" class="btn-success">Отправить</button>
             </form>
         </div>

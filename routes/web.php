@@ -23,7 +23,7 @@ Route::get('/tag/{id}/', 'ArticlesController@showTag')->where('id', '\d')->name(
 
 
 //mail
-Route::get('/send', 'MailController@send');
+Route::post('/send', 'MailController@send');
 
 
 Route::group(['middleware' => 'guest'], function () {
