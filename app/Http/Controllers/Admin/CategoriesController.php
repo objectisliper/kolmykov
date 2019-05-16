@@ -79,7 +79,6 @@ class CategoriesController extends Controller
         } catch (ValidationException $e) {
             \Log::error($e->getMessage());
             return back()->with('error', $e->getMessage());
-
         }
     }
 

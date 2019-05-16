@@ -14,7 +14,17 @@
 Route::get('/', 'ArticlesController@index');
 
 //blog
-Route::get('/article/{id}/{slug}.html', 'ArticlesController@showArticle')->where('id', '\d')->name('blog.show');
+Route::get('/{category}/{id}-{slug}.html', 'ArticlesController@showArticle')->where('id', '\d')->name('blog.show');
+Route::get('/about.html', 'AboutController@index')->name('about.show');
+Route::get('/contact.html', 'ContactController@index')->name('contact.show');
+Route::get('/categories.html', 'CategoriesController@index')->name('categories.show');
+Route::get('/category/{id}/', 'ArticlesController@showCategory')->where('id', '\d')->name('articles.category.show');
+Route::get('/tag/{id}/', 'ArticlesController@showTag')->where('id', '\d')->name('articles.tag.show');
+
+
+//mail
+Route::get('/send', 'MailController@send');
+
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
@@ -23,6 +33,7 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('/login', 'Auth\LoginController@login');
 });
 
+//account
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/logout', function () {
@@ -30,6 +41,9 @@ Route::group(['middleware' => 'auth'], function () {
         return redirect(route('login'));
     })->name('logout');
     Route::get('/my/account', 'AccountController@index')->name('account');
+
+    //comments
+    Route::post('/comments/add', 'CommentsController@addComment')->name('comments.add');
 
     // admin
     Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function () {
@@ -52,6 +66,32 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/articles/edit/{id}', 'Admin\ArticlesController@editRequestArticle')->where('id', '\d+');
         Route::delete('/articles/delete', 'Admin\ArticlesController@deleteArticle')->name('articles.delete');
 
+        // tags
+        Route::get('/tags', 'Admin\TagsController@index')->name('tags');
+        Route::get('/tags/add', 'Admin\TagsController@addTag')->name('tags.add');
+        Route::post('/tags/add', 'Admin\TagsController@addRequestTag');
+        Route::get('/tags/edit/{id}', 'Admin\TagsController@editTag')
+            ->where('id', '\d+')
+            ->name('tags.edit');
+        Route::post('/tags/edit/{id}', 'Admin\TagsController@editRequestTag')
+            ->where('id', '\d+');
+        Route::delete('/tags/delete', 'Admin\TagsController@deleteTag')->name('tags.delete');
+
+        /* Users */
+        Route::get('/users', 'Admin\UsersController@index')->name('users');
+
+        Route::get('/comments', 'Admin\CommentsController@index')->name('comments');
+        Route::get('/comments/accepted/{id}', 'Admin\CommentsController@acceptComment')
+            ->where('id', '\d+')->name('comment.accepted');
+
+        //about
+        Route::get('/about', 'Admin\AboutController@index')->name('about');
+        Route::post('/about', 'Admin\AboutController@editAbout')
+            ->where('id', '\d+');
+        //contact
+        Route::get('/contact', 'Admin\ContactController@index')->name('contact');
+        Route::post('/contact', 'Admin\ContactController@editContact')
+            ->where('id', '\d+');
     });
 });
 

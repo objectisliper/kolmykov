@@ -20,10 +20,10 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
 
-
                 @foreach($articles as $article)
                 <div class="post-preview">
                     <a href="{!! route('blog.show', [
+                    'category' => str_slug($article->categories->first()->title),
                     'id' => $article->id,
                     'slug' => str_slug($article->title)
                     ]) !!}">
@@ -34,6 +34,11 @@
                             {!! $article->short_text !!}
                         </h3>
                     </a>
+{{--                    <p class="post-meta">Теги:@foreach($article->tags as $tag) {!! $tag->title !!} @endforeach</p>--}}
+                    <p class="post-meta">Теги:@foreach($article->tags as $tag)<a href="{!! route('articles.tag.show', [
+                                        'id' => $tag->id,
+                                        ]) !!}">{!! $tag->title !!}</a>  @endforeach</p>
+
                     <p class="post-meta">Опубликовано в {!! $article->created_at->format('H:i d-m-Y') !!}</p>
                 </div>
                 <hr>

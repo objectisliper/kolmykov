@@ -13,6 +13,13 @@
                                 selected @endif>{{$category->title}}</option>
                     @endforeach
                 </select></p>
+            <p>Выбор тега (ов): <br> <select name="tags[]" class="form-control" multiple>
+                    @foreach($tags as $tag)
+                        <option value="{{$tag->id}}"
+                                @if(in_array($tag->id, $arrTags))
+                                selected @endif>{{$tag->title}}</option>
+                    @endforeach
+                </select></p>
             <p>Введите заголовок: <br> <input type="text" name="title" value="{{$article->title}}" class="form-control"
                                               required></p>
             <p>Анонс: <br> <textarea name="short_text" class="form-control"

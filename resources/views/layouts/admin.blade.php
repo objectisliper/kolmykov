@@ -68,21 +68,39 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{!! route('tags') !!}">
+                            <span data-feather="file"></span>
+                            Теги
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{!! route('articles') !!}">
                             <span data-feather="file"></span>
                             Посты
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{!! route('users') !!}">
                             <span data-feather="users"></span>
                             Пользователи
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{!! route('comments') !!}">
                             <span data-feather="bar-chart-2"></span>
                             Комментарии
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{!! route('about') !!}">
+                            <span data-feather="bar-chart-2"></span>
+                            О компании
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{!! route('contact') !!}">
+                            <span data-feather="bar-chart-2"></span>
+                            Контакты
                         </a>
                     </li>
                 </ul>

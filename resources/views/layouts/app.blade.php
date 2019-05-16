@@ -21,6 +21,29 @@
     <!-- Custom styles for this template -->
     <link href="/blog/css/clean-blog.min.css" rel="stylesheet">
 
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/semantic.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/bootstrap.min.css"/>
+
+    <!--
+        RTL version
+    -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.rtl.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/default.rtl.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/semantic.rtl.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/bootstrap.rtl.min.css"/>
+
+
 </head>
 
 <body>
@@ -36,16 +59,16 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Главная</a>
+                    <a class="nav-link" href="/">Главная</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about.html">О компании</a>
+                    <a class="nav-link" href="{!! route('about.show') !!}">О компании</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="post.html">Публикации</a>
+                    <a class="nav-link" href="{!! route('categories.show') !!}">Публикации</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Контакты</a>
+                    <a class="nav-link" href="{!! route('contact.show') !!}">Контакты</a>
                 </li>
             </ul>
         </div>
@@ -53,7 +76,7 @@
 </nav>
 
 @yield('content')
-
+@include('inc.messages')
 <hr>
 
 <!-- Footer -->
